@@ -1,3 +1,4 @@
 flask
-charm-crypto
 requests
+gunicorn
+git+https://github.com/JHUISI/charm.git
