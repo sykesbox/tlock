@@ -1,8 +1,15 @@
+import os
 from flask import Flask, request, jsonify
 import hashlib
 import requests
 import base64
-from charm.toolbox.pairinggroup import PairingGroup, G1, G2, GT, pair
+
+# Try importing charm-crypto, install it dynamically if missing
+try:
+    from charm.toolbox.pairinggroup import PairingGroup, G1, G2, GT, pair
+except ImportError:
+    os.system("pip install git+https://github.com/JHUISI/charm.git")
+    from charm.toolbox.pairinggroup import PairingGroup, G1, G2, GT, pair
 
 app = Flask(__name__)
 group = PairingGroup('SS512')
